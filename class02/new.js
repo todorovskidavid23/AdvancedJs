@@ -117,9 +117,12 @@ function clean(arr) {
 
   for (let i = 0; i < arr.length; i++) {
     let element = arr[i];
-    if (element !== undefined && element !== null && element !== "" && !Number.isNaN(element)) {
+    if(element || element===false){
       result.push(element);
     }
+    // if (element !== undefined && element !== null && element !== "" && !Number.isNaN(element)) {
+    //   result.push(element);
+    // }
   }
 
   return result;
@@ -142,36 +145,37 @@ console.log(clean(test3));
 
 
 
+// window,document,body itn...
 
 
 
 
 
 
+// metod na toj objekt
 
+function Random(){
+  return Math.floor(Math.random() * 256);
+}
 
+function changeBackgroundColor() {
+    let red = Random();
+    let green = Random();
+    let blue = Random();
+  //interpolacija
+    let bgColor = `rgb(${red}, ${green}, ${blue})`;
 
+    document.body.style.backgroundColor = bgColor;
+    document.getElementById('rgbValue').textContent = bgColor;
 
+    console.log(`New background color: ${bgColor}`);
+}
 
-
-
-
-
-
-// function changeBackgroundColor() {
-//     // Generate random values for Red, Green, and Blue (0-255)
-//     const red = Math.floor(Math.random() * 256);
-//     const green = Math.floor(Math.random() * 256);
-//     const blue = Math.floor(Math.random() * 256);
-
-//     // Construct the RGB color string
-//     const bgColor = `rgb(${red}, ${green}, ${blue})`;
-
-//     // Apply the color to the body background
-//     document.body.style.backgroundColor = bgColor;
-
-//     console.log(`New background color: ${bgColor}`);
-// }
-
-// // Optional: Change color on page load
+// Optional: Change color on page load
 // document.body.onload = changeBackgroundColor;
+// document.body.addEventListener('load', changeBackgroundColor);
+
+// let button=document.getElementById("btn");
+// button.addEventListener("load",changeBackgroundColor())
+
+document.body.addEventListener('load', changeBackgroundColor());
