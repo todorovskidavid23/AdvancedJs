@@ -87,7 +87,7 @@
 // })
 
 //Get data from API using plain JS with Fetch
-
+//NAJVAZNO
 
 document.getElementById("sendRequest")
     .addEventListener("click",function(){
