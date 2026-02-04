@@ -99,7 +99,7 @@ document.getElementById("sendRequest")
                 .then(function(data){
                     // console.log(data);//dobivme response so serverot
                     let list=document.getElementById("todos");
-                    list.innerHTML="";//da se iscisti 
+                    list.innerHTML="";//da se iscisti ako pak go kliknam kopceto
                     for (const todo of data) {
                         list.innerHTML += `<li> ${todo.title} | Completed:${todo.completed}</li>`
                     }
