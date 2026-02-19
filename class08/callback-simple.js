@@ -26,3 +26,36 @@ document.getElementById("btn")
     .addEventListener("click",function(){
         clearInterval(intervalId);
     })
+
+
+
+
+function first(){
+  setTimeout(() => console.log("First done"), 1000);
+}
+
+function second(){
+  console.log("Second");
+}
+
+first();
+second();
+// Second
+// First done
+
+
+
+function first(callback){
+  setTimeout(() => {
+    console.log("First done");
+    callback();
+  }, 1000);
+}
+
+function second(){
+  console.log("Second");
+}
+
+first(second);
+// First done
+// Second
