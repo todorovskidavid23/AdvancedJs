@@ -8,7 +8,7 @@
 // 7. Implement constructor function with props only needed for the data to be displayed
 
 //2.
-const url="https://restcountries.com/v3.1/all?fields=name,capital,population,flags"
+const url="https://restcountries.com/v3.1/all?fields=name,capital,population,flags,region"
 //1.
 let html={
     searchInput: document.getElementById("inpSearch"),
@@ -55,14 +55,18 @@ getData(url)
             html.cardContainer.innerHTML+=createCard(country);
         });
         toggleSpinner(false);
-});
+    })
+    .catch(err=>{
+        toggleSpinner(false);
+        html.cardContainer.innerHTML="<div class='row'> <p class='text-danger'>Oops something went wrong</p></div>"
 
+    })
 
 function createCard(country){
     return `
     
         <div class="col-4">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 25rem;">
             <img class="card-img-top" src="${country.flags.png}" alt="${country.flags.alt}">
                 <div class="card-body">
                     <h5 class="card-title">${country.name.common}</h5>
@@ -74,3 +78,71 @@ function createCard(country){
     
     `;
 }
+
+
+
+// html.searchBtn.addEventListener("click", function() {
+//     const searchValue = html.searchInput.value.trim().toLowerCase();
+//     if(searchValue){
+//         toggleSpinner(true);
+//         getData(`https://restcountries.com/v3.1/name/${searchValue}?fullText=false&fields=name,capital,population,flags`)
+//             .then(countries => {
+//                 html.cardContainer.innerHTML = "";
+//                 countries.forEach(c => {
+//                     html.cardContainer.innerHTML += createCard(c);
+//                 });
+//                 toggleSpinner(false);
+//             }).catch(err => {
+//                 html.cardContainer.innerHTML = "<p class='text-danger'>Country not found!</p>";
+//                 toggleSpinner(false);
+//             });
+//     }
+
+//     else {
+//         // Ако полето е празно, прикажи ги сите држави
+//         getData(url)  // url е https://restcountries.com/v3.1/all?fields=name,capital,population,flags
+//             .then(countries => {
+//                 html.cardContainer.innerHTML = "";
+//                 countries.forEach(c => {
+//                     html.cardContainer.innerHTML += createCard(c);
+//                 });
+//                 toggleSpinner(false);
+//             });
+//     }
+    
+// });
+
+//RESET
+// html.resetBtn.addEventListener("click", () => {
+//     html.searchInput.value = ""; // чисти го полето за search
+//     html.cardContainer.innerHTML = ""; // чисти ги резултатите
+//     toggleSpinner(true);
+//     getData(url) // fetch на сите држави
+//         .then(countries => {
+//             countries.forEach(c => html.cardContainer.innerHTML += createCard(c));
+//             toggleSpinner(false);
+//         });
+// });
+
+
+
+html.europeBtn.addEventListener("click", function(){
+     
+    html.cardContainer.innerHTML="";
+    toggleSpinner(true);
+
+
+    getData(url)
+        .then(countries=>{
+            toggleSpinner(false);
+            let filterCountries=countries
+                .filter(c=>c.region==="Europe");
+
+            filterCountries.forEach(country=>{
+                html.cardContainer.innerHTML+=createCard(country)
+            })
+        })
+
+
+
+})
