@@ -114,3 +114,7 @@ console.log(fish);
 
 // Note which student we are creating;
 //this.AcemdyName=network
+
+
+//STAVI GO VO FUNCTION
+//ne vo parametri 61 red false i gore da GI NEMAM VO PARAMETRI
