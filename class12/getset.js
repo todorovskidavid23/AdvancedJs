@@ -106,7 +106,7 @@ console.log(fordObj);
 //script type="module";
 
 //destrukcija na objekt
-//script.kjs file import{sayHrllo, sayGoodby} from "drig file"
+//script.kjs file import{sayHello, sayGoodby} from "drig file"
 
 
 //priduct servise ima fetch
@@ -114,3 +114,9 @@ console.log(fordObj);
 
 
 //ako imam export kje si zanm deka moze so import da se dodade
+
+
+
+
+//Modeliranje da si mapirame vo sboj sopstven model
+//js loosley type lagnugae sva moze da se vnese vo let
